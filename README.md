@@ -1,11 +1,11 @@
 # fivem-react-boilerplate
 ## Notice
-I am no longer involved in FiveM and apart from the occasional dependency bump this project is unmaintained. PRs highly encouraged!
+This is based off of [fivem-react-boilerplate](https://github.com/calumari/fivem-react-boilerplate) && [fivem-ts-react-boilerplate](https://github.com/99kr/fivem-ts-react-boilerplate) 
 
 # Quick start
 ### 1. Clone repo
 ```
-git clone https://github.com/calumari/fivem-react-boilerplate.git html
+git clone https://github.com/ZiiMs/react-fivem-boilerplate.git html
 ```
 
 ### 2. Install dependencies
@@ -18,9 +18,6 @@ npm install
 ```
 npm run build
 ```
-
-### 4. Copy the contents of the generated manifest to your resource manifest!
-
 # Commands
 ### Run locally for development
 ```
