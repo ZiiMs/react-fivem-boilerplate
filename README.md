@@ -1,5 +1,4 @@
 # fivem-react-boilerplate
-## Notice
 This is based off of [fivem-react-boilerplate](https://github.com/calumari/fivem-react-boilerplate) && [fivem-ts-react-boilerplate](https://github.com/99kr/fivem-ts-react-boilerplate) 
 
 # Quick start
