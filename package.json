@@ -40,11 +40,15 @@
     "redux": "^4.0.5",
     "styled-components": "^5.2.1"
   },
+  
   "devDependencies": {
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-react-constant-elements": "^7.12.13",
+    "@babel/plugin-transform-react-inline-elements": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.13.8",
     "@babel/preset-env": "^7.13.8",
     "@babel/preset-react": "^7.12.13",
     "@types/react": "^16.14.4",
@@ -62,6 +66,7 @@
     "rimraf": "^2.7.1",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
+	"optimize-css-assets-webpack-plugin": "^5.0.4",
     "svg-url-loader": "^2.3.3",
     "terser-webpack-plugin": "^1.4.5",
     "url-loader": "^1.1.2",

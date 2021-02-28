@@ -12,8 +12,14 @@ module.exports = options => ({
         rules: [
         {
             test: /\.jsx?$/, // Transform all .js and .jsx files required somewhere with Babel
+            exclude: /node_modules/,
             use: {
                 loader: 'babel-loader',
+                options: {
+                    cacheDirectory: true,
+                    cacheCompression: false,
+                    envName: options.mode
+                }
             },
         },
         {
@@ -126,10 +132,12 @@ module.exports = options => ({
         }),
     ]),
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        compress: true,
+        open: true,
+        overlay: true
     },
     resolve: {
-        modules: ['src', 'node_modules'],
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.react.js'],
+        extensions: ['.js', '.jsx', '.react.js'],
     },
 });

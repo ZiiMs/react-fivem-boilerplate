@@ -1,9 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { useSelector } from '../../app';
+import { useSelector, store } from '../../index';
 import Nui from "../../Nui";
-import { store } from "../../app";
 
 Nui.onEvent("SHOW", (payload) => {
   store.dispatch({type: "SHOW", payload})
