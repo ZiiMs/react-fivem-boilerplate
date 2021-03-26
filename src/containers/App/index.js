@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { useSelector, store } from '../../index';
@@ -10,6 +10,9 @@ Nui.onEvent('SHOW', (payload) => {
 
 const useStyles = makeStyles(() => ({
   background: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
     backgroundImage: 'url("https://cdn.discordapp.com/attachments/655453054522621964/669602739545964564/20190715004102_1.jpg")',
   },
 }));
@@ -17,6 +20,27 @@ const useStyles = makeStyles(() => ({
 const App = () => {
   const show = useSelector((state) => state.Show.show);
   const classes = useStyles();
+
+  let toggle = true;
+
+  const handleKeyPress = useCallback(
+    (e) => {
+      // Press U to trigger Event
+      if (e.keyCode === 85) {
+        e.preventDefault();
+        Nui.emitEvent('SHOW', { show: !toggle });
+        toggle = !toggle;
+      }
+    }, [],
+  );
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress, false);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress, false);
+    };
+  }, []);
 
   return (
     <div className={classes.background} hidden={!show}>

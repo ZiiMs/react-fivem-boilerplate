@@ -7,7 +7,7 @@ const IShow = {
 };
 
 const initialState = {
-  show: false,
+  show: true,
 };
 
 const scoreboardData = (
