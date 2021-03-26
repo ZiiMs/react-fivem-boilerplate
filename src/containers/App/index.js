@@ -1,33 +1,28 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { useSelector, store } from '../../index';
-import Nui from "../../Nui";
+import Nui from '../../Nui';
 
-Nui.onEvent("SHOW", (payload) => {
-  store.dispatch({type: "SHOW", payload})
-})
+Nui.onEvent('SHOW', (payload) => {
+  store.dispatch({ type: 'SHOW', payload });
+});
 
-const Container = styled.div`
-position: absolute;
-width: 100%;
-height: 100%;
-${process.env.NODE_ENV == "development" && 
-    css`
-        background-image: url("https://cdn.discordapp.com/attachments/655453054522621964/669602739545964564/20190715004102_1.jpg");
-    `
-}
-`;
+const useStyles = makeStyles(() => ({
+  background: {
+    backgroundImage: 'url("https://cdn.discordapp.com/attachments/655453054522621964/669602739545964564/20190715004102_1.jpg")',
+  },
+}));
 
 const App = () => {
-  const show = useSelector(state => state.Show)
+  const show = useSelector((state) => state.Show.show);
+  const classes = useStyles();
 
   return (
-    <Container hidden={!show}>
-      <h1 style={{fontSize: "30px"}}>{show.toString()}</h1>
-    </Container>
-  )
+    <div className={classes.background} hidden={!show}>
+      <h1 style={{ fontSize: '30px' }}>{show.toString()}</h1>
+    </div>
+  );
 };
 
-export default App
-
+export default App;

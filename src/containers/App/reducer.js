@@ -1,19 +1,25 @@
-var IShow = {
+const IShow = {
   type: String,
-  payload: Boolean
-}
+  payload: Object,
+  show: Boolean,
+  key: Number,
+  players: Object,
+};
 
+const initialState = {
+  show: false,
+};
 
-
-const Show = (
-  state = process.env.NODE_ENV == "development",
-  data = IShow) => {
+const scoreboardData = (
+  state = initialState,
+  data = IShow,
+) => {
   switch (data.type) {
     case 'SHOW':
-      return data.payload
+      return { ...state, show: data.payload.show };
     default:
       return state;
   }
 };
 
-export default Show;
+export default scoreboardData;
