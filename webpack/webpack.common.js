@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+// const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = (options) => ({
   mode: options.mode,
@@ -8,28 +9,28 @@ module.exports = (options) => ({
     path: path.resolve(process.cwd(), 'build'),
     filename: '[name].js',
   },
+  stats: {
+    preset: 'normal',
+    moduleTrace: true,
+    errorDetails: true,
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/, // Transform all .js and .jsx files required somewhere with Babel
+        test: /\.(ts|js)x?$/i,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: true,
-              cacheCompression: false,
-              envName: options.mode,
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-react',
+              ],
             },
+
           }, 'eslint-loader',
         ],
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
       },
       {
         // Preprocess our own .css files
@@ -108,30 +109,19 @@ module.exports = (options) => ({
           },
         },
       },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ifdef-loader',
-            options: {
-              DEBUG: options.mode !== 'production',
-              version: 3,
-              'ifdef-verbose': true, // add this for verbose output
-              'ifdef-triple-slash': true, // add this to use double slash comment instead of default triple slash
-            },
-          }, 'eslint-loader',
-        ],
-      },
     ],
   },
   plugins: options.plugins.concat([
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // inside your code for any environment checks; Terser will automatically
     // drop any unreachable code.
+    // new ESLintPlugin(options),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
+    // new ESLintPlugin({
+    //   extensions: ['.js', '.jsx', '.react.js', 'ts', 'tsx'],
+    // }),
   ]),
   devServer: {
     historyApiFallback: true,

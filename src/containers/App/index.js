@@ -23,6 +23,8 @@ const App = () => {
 
   let toggle = true;
 
+  let test = 5;
+
   const handleKeyPress = useCallback(
     (e) => {
       // Press U to trigger Event
@@ -40,7 +42,7 @@ const App = () => {
     return () => {
       document.removeEventListener('keydown', handleKeyPress, false);
     };
-  }, []);
+  }, [handleKeyPress]);
 
   return (
     <div className={classes.background} hidden={!show}>
