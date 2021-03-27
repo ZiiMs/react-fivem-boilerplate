@@ -23,8 +23,6 @@ const App = () => {
 
   let toggle = true;
 
-  let test = 5;
-
   const handleKeyPress = useCallback(
     (e) => {
       // Press U to trigger Event
