@@ -10,7 +10,7 @@ git clone https://github.com/ZiiMs/react-fivem-boilerplate.git html
 ### 2. Install dependencies
 ```
 cd html
-npm install --legacy-peer-deps
+npm install
 ```
 
 ### 3. Build
