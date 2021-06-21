@@ -1,20 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { useSelector as useReduxSelector, Provider } from 'react-redux';
-import { createStore } from 'redux';
-
-import App from './containers/App';
-import rootReducer from './reducers';
-import { EventListener } from './Nui';
-
-export const store = createStore(rootReducer, {});
-
-export const useSelector = useReduxSelector;
+import React from "react"
+import ReactDOM from "react-dom"
+import App from './component/App';
+import { NuiProvider } from "fivem-nui-react-lib"
+import {ChakraProvider} from "@chakra-ui/react"
+import theme from './theme';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-    <EventListener />
-  </Provider>,
-  document.getElementById('app'),
-);
+  <>
+    <NuiProvider resource="example">
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </NuiProvider>
+  </>,
+  document.getElementById('app')
+)
